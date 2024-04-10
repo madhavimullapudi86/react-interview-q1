@@ -2,6 +2,7 @@ import { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 import { Container } from 'react-bootstrap';
 import FormComponent from './components/FormComponent';
+import ListComponent from './components/ListComponent';
 
 function App() {
   const [formData, setFormData] = useState([]);
@@ -20,6 +21,13 @@ function App() {
     // react-bootstrap components are being used to render the Form to get the responsiveness.
     <Container style={{ paddingTop: '50px'}}>
       <FormComponent updateFormData={updateFormData} />
+      {
+        // The list will be displayed only when the user has entered any input and clicks on Add button.
+        formData.length > 0
+          ?
+          <ListComponent formData={formData} />
+          : null
+      }
     </Container>
   );
 }
